@@ -1,0 +1,30 @@
+<div>
+  <% if logged_in? %>
+    <div class='span0 well text-center'> 
+      <%= link_to vote_post_path(post, vote: true), method: 'post' do %>
+        <i class='icon-arrow-up'></i>
+      <% end %>
+      <br/>
+      <%= pluralize(post.total_votes, 'vote') %> 
+        <br/>
+      <%= link_to vote_post_path(post, vote: false), method: 'post' do %>
+        <i class='icon-arrow-down'></i>
+      <% end %>
+    </div>
+  <% end %>
+  <div class='row'>
+    <div class='span8 well'> 
+      <%= render post.categories %> 
+      <p> <%= link_to post.title, display_url(post.url) %></p>
+      <p> <%= post.description %></p>
+      <p><span class='quiet'>
+        Submitted by </span><%= link_to post.creator.username, user_path(post.creator) %></P>
+      <small> <%= time_ago_in_words(post.created_at) + ' ago'
+         %></small>
+        <p><small><span><%= link_to("#{post.comments.size} comments", post_path(post))%>
+      </span></small></p>
+      
+    </div>
+  </div>
+</div>
+    

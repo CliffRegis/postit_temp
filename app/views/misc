@@ -1,0 +1,21 @@
+<li><%= link_to(new_category_path [@post, @category]) do %>
+      <i class="icon-plus"></i>
+      New Category
+      <%end%>
+    </li>
+
+
+    <p><span class='quiet'>
+        Submitted by </span><%= link_to post.creator.username, user_path(post.creator) %></P>
+      <small> <%= time_ago_in_words(post.created_at) + ' ago'
+         %></small>
+        <p><small><span><%= link_to("#{post.comments.size} comments", post_path(post))%>
+      </span></small></p>
+
+      
+  def require_same_user
+    if current_user != @user
+      flash[:error] = "you cannot do that!"
+      redirect_to posts_path
+    end
+  end

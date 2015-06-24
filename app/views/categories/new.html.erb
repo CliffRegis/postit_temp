@@ -1,0 +1,15 @@
+<% if logged_in? %>
+  <%= render 'shared/error', obj: @category %>
+  <%= render 'shared/content_title', title: "New category" %>
+
+  <div class='well'>
+    <%= form_for @category do |f| %>
+      <div class='control-group'> 
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <br>
+      <%= f.submit 'Create category', class: 'btn-btn-primary' %>
+    <% end %>
+  </div>
+<% end %>

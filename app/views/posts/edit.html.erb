@@ -1,0 +1,6 @@
+<% if logged_in? %>
+  <h4>Edit Post</h4>
+  <%= render 'shared/content_title', title: 'Edit this post' %>
+
+  <%= render 'form' %>
+<% end %>
